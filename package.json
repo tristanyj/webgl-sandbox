@@ -1,7 +1,7 @@
 {
-	"name": "nuxt-boilerplate",
+	"name": "webgl-sandbox",
 	"version": "1.0.0",
-	"description": "Nuxt Boilerplate",
+	"description": "WebGL Sandbox",
 	"author": "Tristan Lanoye",
 	"private": true,
 	"scripts": {

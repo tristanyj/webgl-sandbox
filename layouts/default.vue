@@ -1,6 +1,6 @@
 <template>
 	<div class="__layout-wrapper">
-		<div class="__content-wrapper" data-scroll-container>
+		<div class="__content-wrapper">
 			<nuxt/>
 		</div>
 	</div>
@@ -8,18 +8,7 @@
 
 <script>
 	export default {
-		mounted() {
-			this.$nuxt.$nextTick(() => {
-				this.scroll = new LocomotiveScroll({
-					el: document.querySelector('[data-scroll-container]'),
-					smooth: true,
-					getSpeed: true
-				})
-
-
-				this.scroll.on('scroll', (e) => {  })
-			})
-		}
+		mounted() {}
 	}
 </script>
 

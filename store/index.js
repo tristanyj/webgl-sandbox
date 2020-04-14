@@ -1,13 +1,14 @@
 export const state = () => ({
-	data: {
-		title: 'Nuxt Boilerplate',
-		loaded: true
-	}
+	sketches: [
+		{
+
+		},
+	]
 })
 
 export const getters = {
-	GET_STATE(state) {
-		return state.data
+	GET_SKETCHES(state) {
+		return state.sketches
 	}
 }
 
