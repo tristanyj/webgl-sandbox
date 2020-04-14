@@ -1,8 +1,5 @@
 export const state = () => ({
 	sketches: [
-		{
-
-		},
 	]
 })
 
@@ -11,6 +8,3 @@ export const getters = {
 		return state.sketches
 	}
 }
-
-export const mutations = { }
-export const actions = { }

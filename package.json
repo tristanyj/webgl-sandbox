@@ -17,6 +17,8 @@
 		"smoothscroll-polyfill": "^0.4.4",
 		"stylus": "^0.54.5",
 		"stylus-loader": "^3.0.2",
+		"three": "^0.115.0",
+		"three-orbit-controls": "^82.1.0",
 		"vuex-persistedstate": "^3.0.0"
 	},
 	"devDependencies": {
