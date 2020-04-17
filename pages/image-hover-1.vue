@@ -1,30 +1,28 @@
 <template>
-	<div class="container-page container-sketch container-sketch-{{ dashCase name }}">
+	<div class="container-page container-sketch container-sketch-image-hover-1">
 		<nuxt-link class="back" to="/">back</nuxt-link>
-		<div ref="container" class="canvas-container"></div>
+		<item-list/>
 	</div>
 </template>
-
-<style lang="stylus" scoped>
-	.container-sketch-{{ dashCase name }} {
-
-	}
-</style>
 
 <script>
 	import * as THREE from 'three'
 
-	import Base from '@/assets/scripts/three/Base'
+	import Scene from '@/assets/scripts/three/hover-image-1/Scene'
+	import Image from '@/assets/scripts/three/hover-image-1/Image'
+
+	import itemList from '@/components/item/list'
 
 	import getSketchMixin from '@/mixins/get-sketch'
 	import getStatsMixin from '@/mixins/get-stats'
 	import getGuiMixin from '@/mixins/get-gui'
 
 	export default {
-		name: 'sketch-{{ dashCase name }}',
+		layout: 'sketch',
+		name: 'sketch-image-hover-1',
 		head () {
 			return {
-				title: '{{ titleCase name }} — WebGL Sandbox'
+				title: 'Image Hover 1 — WebGL Sandbox'
 			}
 		},
 		data() {
@@ -34,19 +32,17 @@
 				}
 			}
 		},
+		components: {
+			itemList
+		},
 		mixins: [ getSketchMixin, getStatsMixin, getGuiMixin ],
 		methods: {
 			initGui() {
 				this.gui.add(this.settings, 'progress', 0, 1, 0.01)
 			},
-			initCube() {
-				this.cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshBasicMaterial({ color: 0x00ff00 }))
-				this.base.scene.add(this.cube)
-			},
 			loop() {
-				this.cube.rotation.x += 0.01
-				this.cube.rotation.y += 0.01
-				this.base.render()
+				this.canvas.render()
+				this.images.forEach(img => { img.render() })
 
 				this.stats.update()
 
@@ -54,13 +50,17 @@
 			}
 		},
 		mounted() {
-			this.base = new Base({
+			this.canvas = new Scene({
 				DOM: {
-					container: this.$refs.container
+					container: document.querySelector('.canvas-container')
 				}
 			})
 
-			this.initCube()
+			this.images = []
+			Array.from(document.querySelectorAll('.js-image')).forEach(el => {
+				this.images.push(new Image(el, this.canvas))
+			})
+
 			this.initGui()
 			this.loop()
 		}

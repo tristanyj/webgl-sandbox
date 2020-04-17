@@ -3,42 +3,36 @@ const OrbitControls = require('three-orbit-controls')(THREE)
 
 export default class Base {
 	constructor(opts = {}) {
-		this.DOM = opts.DOM ? opts.DOM : {}
-		this.fullscreen = opts.fullscreen
+		this.DOM = opts.DOM || {}
+		this.isControl = opts.isControl || false
 
 		this.size = {
-			width: this.fullscreen ? window.innerWidth : this.DOM.container.getBoundingClientRect().width,
-			height: this.fullscreen ? window.innerHeight : this.DOM.container.getBoundingClientRect().height
+			width: window.innerWidth,
+			height: window.innerHeight
 		}
 
-		this.init()
-	}
-
-	init() {
 		this.scene = new THREE.Scene()
 		this.camera = new THREE.PerspectiveCamera(75, this.size.width / this.size.height, 0.1, 1000)
-		this.controls = new OrbitControls(this.camera)
+		if(this.isControl) this.controls = new OrbitControls(this.camera)
 
-		this.renderer = new THREE.WebGLRenderer()
+		this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+		this.renderer.setPixelRatio(window.devicePixelRatio)
 		this.renderer.setSize(this.size.width, this.size.height)
+		this.renderer.sortObjects = false
+
 		this.DOM.container.appendChild(this.renderer.domElement)
 
-		this.geometry = new THREE.BoxGeometry(1, 1, 1)
-		this.material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
-		this.cube = new THREE.Mesh(this.geometry, this.material)
-		this.scene.add(this.cube)
+		this.cameraDistance = 400
+		this.camera.position.set(0, 0, this.cameraDistance)
+		this.camera.lookAt(0, 0, 0)
+		this.camera.aspect = this.size.width / this.size.height
+		this.camera.fov = 2 * Math.atan(this.size.width / this.camera.aspect / (2 * this.cameraDistance)) * (180 / Math.PI)
+		this.camera.updateProjectionMatrix()
 
-		this.camera.position.z = 5
-
-		this.render()
+		// this.customPass.uniforms.resolution.value.y = this.height / this.width;
 	}
 
 	render() {
-		window.requestAnimationFrame(() => { this.render() })
-
-		this.cube.rotation.x += 0.01
-		this.cube.rotation.y += 0.01
-
 		this.renderer.render(this.scene, this.camera)
 	}
 }

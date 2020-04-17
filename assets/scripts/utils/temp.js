@@ -1,7 +1,3 @@
-export const lerp = (a, b, x) => a * (1 - x) + b * x
-
-export const map = (x, a, b, c, d) => (x - a) * (d - c) / (b - a) + c
-
 export const randomRange = (min, max) => {
     return Math.random() * (max - min) + min
 }

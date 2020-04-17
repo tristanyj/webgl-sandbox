@@ -2,15 +2,11 @@
 	<div class="__layout-wrapper">
 		<div class="__content-wrapper">
 			<nuxt/>
+
+			<div class="canvas-container"></div>
 		</div>
 	</div>
 </template>
-
-<script>
-	export default {
-		mounted() {}
-	}
-</script>
 
 <style lang="stylus">
 	.__layout-wrapper {

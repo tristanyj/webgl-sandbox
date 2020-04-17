@@ -5,11 +5,6 @@ module.exports = function (plop) {
 			{
 				name: 'name',
 				message: 'Page Name'
-			},
-			{
-				type: 'confirm',
-				name: 'full',
-				message: 'Full Page'
 			}
 		],
 		actions: [

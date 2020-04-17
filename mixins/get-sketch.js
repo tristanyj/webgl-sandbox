@@ -10,6 +10,6 @@ export default {
 		}
 	},
 	mounted() {
-		console.log(this.sketch)
+		console.log({ sketch: this.sketch })
 	}
 }

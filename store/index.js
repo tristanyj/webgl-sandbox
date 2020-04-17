@@ -1,5 +1,11 @@
 export const state = () => ({
 	sketches: [
+		{
+			url: '/image-hover-1',
+			name: 'image hover 1',
+			options: {
+			}
+		},
 	]
 })
 
