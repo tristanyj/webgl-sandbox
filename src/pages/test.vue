@@ -1,5 +1,5 @@
 <template>
-	<div class="page sketch {{ dashCase name }}">
+	<div class="page test">
 		<nuxt-link to="/" class="back">
 			back
 		</nuxt-link>
@@ -8,8 +8,7 @@
 </template>
 
 <style lang="stylus" scoped>
-.page.{{ dashCase name }} {
-
+.page.test {
 }
 </style>
 
@@ -50,6 +49,7 @@ export default {
 		},
 		initCube() {
 			this.cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshBasicMaterial({ color: 0x00ff00 }))
+			// this.cube.position.z = 1
 			this.base.scene.add(this.cube)
 		},
 		loop() {
@@ -65,7 +65,7 @@ export default {
 	},
 	head() {
 		return {
-			title: 'WebGL Sandbox | {{ titleCase name }}',
+			title: 'WebGL Sandbox | Test',
 			meta: [
 				{ hid: 'description', name: 'description', content: 'Sandbox for WebGL and GLSL experiments' },
 			]

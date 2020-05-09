@@ -3,6 +3,7 @@ module.exports = function (plop) {
 		description: 'Create New Page',
 		prompts: [
 			{
+				type: 'input',
 				name: 'name',
 				message: 'Page Name'
 			}
@@ -10,13 +11,13 @@ module.exports = function (plop) {
 		actions: [
 			{
 				type: 'add',
-				path: 'pages/{{ dashCase name }}.vue',
+				path: 'src/pages/{{ dashCase name }}.vue',
 				templateFile: 'plop-templates/page.vue',
 				abortOnFail: true
 			},
 			{
 				type: 'append',
-				path: 'store/index.js',
+				path: 'src/store/index.js',
 				pattern: /sketches: \[/,
 				templateFile: 'plop-templates/append-store.js'
 			}
