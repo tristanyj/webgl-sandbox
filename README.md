@@ -18,5 +18,5 @@ New files are added to the `pages` folder and their reference are added<> to the
 
 ## Help
 
-- [Canvas Sketch Documentation](https://github.com/mattdesl/canvas-sketch/blob/master/docs/README.md)
-- [Canvas Sketch Util Documentation](https://github.com/mattdesl/canvas-sketch-util/blob/master/docs/README.md)
+- [ThreeJS Documentation](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene)
+- [ThreeJS Examples](https://threejs.org/examples/#webgl_animation_cloth)
